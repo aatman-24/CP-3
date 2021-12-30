@@ -1,0 +1,11 @@
+            BigInteger.ONE;
+            BigInteger.ZERO;
+            BigInteger.TWO;
+            BigInteger.TEN;
+
+
+
+            Intialization
+            from the string direct -> BigInteger a1 = new BigInteger("1")
+
+            from the int -> BigInteger a1 = BigInteger.valueOf(int)

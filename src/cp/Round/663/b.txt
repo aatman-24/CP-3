@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+void show(int a[],int n)
+{
+	for (int i=0;i<n;i++)
+	{
+		cout << a[i] << "   ";
+	}
+	cout << endl;
+}
+
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	#endif
+
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		int n,m;
+		cin >> n >> m;
+		int cost = 0;
+		vector<vector<char>> in_array;
+		for (int i=0;i<n;i++)
+		{
+			std::vector<char> v;
+			for (int j=0;j<m;j++)
+			{
+				char o;
+				cin >> o;
+				v.push_back(o);
+			}
+			in_array.push_back(v);
+		}
+		for (int i=0; i < m-1;i++)
+		{
+			if (in_array[n-1][i] != 'R')
+			{
+				cost += 1;
+			}
+		}
+		for (int k=0; k< n-1;k++)
+			{	
+				if (in_array[k][m-1] != 'D')
+				{
+					cost += 1;
+				}
+			}
+		cout << cost << endl;
+		}
+	return 0;		
+}

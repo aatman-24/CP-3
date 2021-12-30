@@ -1,0 +1,6 @@
+- UVa 11692 - Rain Fall
+- Exercise 5.2.5*: Given 1 <a< 10, 1 ≤ n ≤ 100000, show how to   compute the value of
+ 1 × a + 2 × a2 + 3 × a3 + ... + n × an efficiently, i.e. in O(log  n)!
+- UVa 11970 - Lucky Numbers
+- UVa 10643 - Facing Problems With
+- Revisit Catalan Number.

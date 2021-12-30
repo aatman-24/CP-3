@@ -1,0 +1,117 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#define ll long long
+
+using namespace std;
+
+// #Title: Three Number Sum
+// 	- three for loops O(N^3) - O(N)
+// 	- hash table (map)	O(N^2) - O(N)
+//  - sort + two pointer O(N^2) + O(NlogN) = O(N^2) &&  O(1) (three Pointer)
+
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	#endif
+
+	vector<int> elements;
+	int num,sum,temp,n;
+
+	cin >> num >> sum;
+	n = num;
+	while(num--)
+	{
+		cin >> temp;
+		elements.push_back(temp);
+	}
+
+
+	// # First Method : Three For Loops O(N^2) - O(N)
+	for(int i = 0 ; i < n ; i++)
+	{
+		for (int j = i+1; j < n ;j++)
+		{
+			for(int k = j + 1; k < n ; k++)
+			{
+				if(elements[i] + elements[j] + elements[k] == sum)
+				{
+					cout << "First Method:\t" << elements[i] << '+' << elements[j] << "+" << elements[k]  << " = " << sum << endl;
+				}
+			}
+		}
+	}
+
+	cout << endl;
+
+	// #Second Method: Hash table - map  O(N^2) - O(N) (Not Good Apporach)
+	map<int,int> mib;
+	map<int,int> mib_temp;
+	for(int i = 0 ; i < n ; i++)
+	{
+		mib[elements[i]] = elements[i];
+	}
+
+	for(vector<int>::iterator k = elements.begin() ; k != elements.end(); k++)
+	{
+		for (vector<int>::iterator it = k + 1; it != elements.end(); it++)
+		{
+			if(mib_temp.find(sum - *it- *k) == mib_temp.end())
+			{
+				mib_temp[*it] = *it;
+			}
+			else
+			{
+				cout << "Second Method:\t" << *k << '+' << *it << '+' << sum - *it - *k << "= " << sum << endl;
+			}
+		}
+		mib_temp.clear();
+	}
+	cout << endl;
+
+
+	// # Third Method : Sort + Three pointer O(N^2) - O(1)
+	sort(elements.begin(),elements.end());
+	int current,left,right;
+	
+	for(int i = 0 ; i < n ; i++)
+	{
+		current = elements[i];
+		if(elements[i] >= sum) break;
+		left = i + 1;
+		right = elements.size() -1 ;
+		while(left < right)
+		{
+			if(current + elements[left] >= sum) break;
+			if(current + elements[left] + elements[right] == sum)
+			{
+				cout << "Third Method:\t" <<  current << '+'  << elements[left] << '+' << elements[right] << "= " << sum << endl;
+				left++;
+				right--;
+			}
+			else if(current + elements[left] + elements[right] < sum )
+			{
+				left++;
+			} 
+			else 
+			{
+				right--;
+			}
+			
+		}
+	}
+
+
+
+
+
+	return 0;
+	
+}	
+
+
+
